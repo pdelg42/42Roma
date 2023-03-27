@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aperrone <aperrone@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gdel-giu <gdel-giu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 09:31:17 by aperrone          #+#    #+#             */
-/*   Updated: 2023/03/06 10:37:51 by aperrone         ###   ########.fr       */
+/*   Updated: 2023/03/27 15:19:42 by gdel-giu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,4 +47,8 @@ void		white();
 void		red();
 void		purple();
 char		*ft_strtrim(const char *s1, const char *set);
+void		*ft_calloc(size_t count, size_t size);
+void		ft_bzero(void *b, size_t n);
+char        *ft_strstr(char *str, char *to_find);
+
 #endif

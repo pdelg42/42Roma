@@ -6,7 +6,7 @@
 #    By: gdel-giu <gdel-giu@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/04 09:37:55 by aperrone          #+#    #+#              #
-#    Updated: 2023/03/27 10:42:46 by gdel-giu         ###   ########.fr        #
+#    Updated: 2023/03/27 17:16:22 by gdel-giu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,8 +27,8 @@ MAIN = main.c
 INC = includes/program.h
 
 PRGMFT = ./srcs/programft
-LIBS = -L./includes -lft -llistft -I.
-KIT =  -L./mlx -lmlx -framework openGL -framework AppKit
+LIBS = -L./includes -lft -llistft -lgetnextline -I.
+KIT = -L./mlx -lmlx -framework openGL -framework AppKit
 FILES = ${wildcard $(PRGMFT)/*.c}
 
 FLAGS = # -Wall -Wextra -Werror
@@ -38,13 +38,16 @@ OBJS = $(FILES:.c=.o)
 
 CC = gcc
 
-all: $(NAME)
+all: libs $(NAME)
+
+libs: 
+	make -C ./includes/.
 
 $(NAME): $(OBJS) 
 	$(CC) $(FLAGS) $(LIBS) $(OBJS) $(KIT) -o $(NAME) 
 
 $(PRGMFT)/%.o : $(PRGMFT)/%.c
-	$(CC) -c $(FLAGS) $(LIBS) $(KIT) $< -o $@
+	$(CC) -c $(FLAGS) $< -o $@
 
 clean:
 	rm -rf $(OBJS)
