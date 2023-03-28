@@ -6,7 +6,7 @@
 /*   By: gdel-giu <gdel-giu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 14:27:24 by gdel-giu          #+#    #+#             */
-/*   Updated: 2023/03/28 05:52:39 by gdel-giu         ###   ########.fr       */
+/*   Updated: 2023/03/28 22:42:56 by gdel-giu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ int	get_elements_from_matrix(t_cub *cub)
 {
 	char 	**getter;
 	int		i;
-
+	
 	getter = cub->map;
 	i = 0;
 	while (i < MAX_MAP_PARAMS && *(getter + i))
@@ -73,13 +73,13 @@ int	get_elements_from_matrix(t_cub *cub)
 				= ft_strdup(*(getter + i));
 		else if (**(getter + i) == 'F' || **(getter + i) == 'C')
 			cub->str_tmp = safe_strjoin(cub->str_tmp, *(getter + i));
-		else if (**(getter + i) == '\n')
-			i--;
+		else if (**(getter + i) == '\0' && i--)
+			getter++;
 		else
 			return (0);
 		i++;
 	}
-	cub->wall_imgs_addrs[4] = NULL; 
+	cub->wall_imgs_addrs[4] = NULL;
 	return (1);
 }
 

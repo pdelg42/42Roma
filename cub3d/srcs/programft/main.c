@@ -6,7 +6,7 @@
 /*   By: gdel-giu <gdel-giu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 10:19:01 by gdel-giu          #+#    #+#             */
-/*   Updated: 2023/03/28 05:53:22 by gdel-giu         ###   ########.fr       */
+/*   Updated: 2023/03/28 22:27:49 by gdel-giu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 // chiudi e libera
 
-int	close_game(t_cub *cub)
+void	close_game(t_cub *cub, char *mex)
 {
 	int i;
 	if (!cub->mlx)
@@ -29,8 +29,15 @@ int	close_game(t_cub *cub)
 	i = 0;
 	while (cub->wall_imgs_addrs[i])
 		free(cub->wall_imgs_addrs[i++]);
-	fprintf(stderr, "\033[6;32m Quitting Cube\033[0;37m\n");
+	fprintf(stderr, "\033[0;32m Quitting Cube: %s\033[0;37m\n", mex);
 	exit(0);
+}
+
+// exit call per l'hook
+
+int	exit_call(t_cub *cub)
+{
+	close_game(cub, "Closed program");
 	return (0);
 }
 
@@ -62,11 +69,11 @@ int main(int argc, char **argv)
 	if (argc < 2)
 		return (1);
 	if (!game_init(&cub))
-		close_game(&cub);
+		close_game(&cub, "\033[1;31mInit error");
 	if (!parse_map(&cub, argv[1]))
-		close_game(&cub);
+		close_game(&cub, "\033[1;31mParse Error");
 	render(&cub);
-	mlx_hook(cub.win, 17, 0, close_game, &cub);
+	mlx_hook(cub.win, 17, 0, exit_call, &cub);
 	mlx_loop(cub.mlx);
 	return (0);
 }

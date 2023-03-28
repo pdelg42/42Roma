@@ -6,7 +6,7 @@
 /*   By: gdel-giu <gdel-giu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 00:47:10 by gdel-giu          #+#    #+#             */
-/*   Updated: 2023/03/28 05:48:21 by gdel-giu         ###   ########.fr       */
+/*   Updated: 2023/03/28 22:28:54 by gdel-giu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@
 
 int	import_elements(t_cub *cub)
 {
+	printf("%s\n", cub->str_tmp);
 	free(cub->str_tmp);
 	cub->str_tmp = NULL;
 	return (1);
