@@ -6,7 +6,7 @@
 #    By: gdel-giu <gdel-giu@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/04 09:37:55 by aperrone          #+#    #+#              #
-#    Updated: 2023/03/27 17:16:22 by gdel-giu         ###   ########.fr        #
+#    Updated: 2023/03/27 23:22:31 by gdel-giu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,6 +48,9 @@ $(NAME): $(OBJS)
 
 $(PRGMFT)/%.o : $(PRGMFT)/%.c
 	$(CC) -c $(FLAGS) $< -o $@
+
+d :
+	$(CC) $(DEBUGGER) $(FLAGS) $(LIBS) $(OBJS) $(KIT) -o $(NAME)
 
 clean:
 	rm -rf $(OBJS)

@@ -6,7 +6,7 @@
 /*   By: gdel-giu <gdel-giu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 11:42:53 by gdel-giu          #+#    #+#             */
-/*   Updated: 2023/03/27 14:22:48 by gdel-giu         ###   ########.fr       */
+/*   Updated: 2023/03/28 05:53:38 by gdel-giu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,9 @@
 
 #define FLOOR 0x0055cc55
 #define SKY 0x00aaaaee
-#define DEF_WALL 0x00aa2222
+#define WALL 0x00aa2222
+
+// funzione placeholder per stampa su finestra e definizione di un orizzonte
 
 void	render(t_cub *cub)
 {
