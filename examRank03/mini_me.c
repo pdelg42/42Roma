@@ -38,7 +38,7 @@ int	check_pos(float x, float y, float x_0, float y_0, float radius)
 {
 	float d;
 
-	d = sqrtf(pow(x - x_0, 2.) + pow(y - y_0, 2.));
+	d = sqrtf(powf(x - x_0, 2.) + powf(y - y_0, 2.));
 	if (d <= radius)
 	{
 		if((radius - d) < 1.0)
